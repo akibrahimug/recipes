@@ -1,25 +1,26 @@
 extends layout
 
 block content
-  a(href='/') ← Back to recipes
-  //- 1. Dynamically display a recipe name
-  h1= recipe.recipe_name
+  nav.grid-container.breadcrumb
+    a(href='/') ← Back to recipes
+    button Dark Mode
 
-  //- 2. Render the `src` attribute using the `image_url` property
-  img(src=`${recipe.image_url}` width='320' height='240')
+  main.grid-container.recipe
+    h1= recipe.recipe_name
+    img.img-recipe(src=`/${recipe.image_url}`)
+    p.lead.text-light= recipe.description
 
-  //- 3. Dynamically display a recipe description
-  p= recipe.description
+    hr
 
-  h2 Ingredients
-  ul
-    //- 4. Use Pug's `each` iterator to render an `<li>` for each ingredient
-    each ingredient in recipe.ingredients
-      li= ingredient
+    h3 Ingredients
+    ul
+      //- 4. Use Pug's `each` iterator to render an `<li>` for each ingredient
+      each ingredient in recipe.ingredients
+        li= ingredient
 
-  h2 Steps
-  ol
-    //- 5. Use an iterator to render an `<li>` for each recipe step
-    each step in recipe.steps
-      li= step
+    h3 Steps
+    ol
+      //- 5. Use an iterator to render an `<li>` for each recipe step
+      each step in recipe.steps
+        li= step
    
